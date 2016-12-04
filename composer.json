@@ -1,18 +1,11 @@
 {
     "private": true,
-    "version": "5.0.6",
-    "name": "emotionLoop/visualCaptcha-wordpress",
-    "description": "visualCaptcha WordPress Plugin",
-    "keywords": ["captcha", "visualCaptcha", "security", "wordpress", "plugin"],
+    "version": "1.0",
+    "name": "CaMer0n/visualcaptcha",
+    "description": "visualCaptcha e107 plugin",
+    "keywords": ["captcha", "visualCaptcha", "security", "e107", "plugin"],
     "homepage": "http://visualcaptcha.net",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "emotionLoop",
-            "email": "hello@emotionloop.com",
-            "role": "Developer"
-        }
-    ],
     "require": {
         "slim/slim": "2.*",
         "emotionloop/visualcaptcha": ">= 0.0.5"
