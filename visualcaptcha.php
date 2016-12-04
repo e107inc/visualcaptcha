@@ -52,6 +52,27 @@ require_once(HEADERF);
     print_a($text);
 
 
+/*XXX todo This may provide clues.  */
+/*
+<div id="sample-captcha" class="visualCaptcha">
+<div class="visualCaptcha-accessibility-wrapper visualCaptcha-hide">
+<div class="accessibility-description">Type below the <strong>answer</strong> to what you hear. Numbers or words:</div>
+<audio preload="preload"><source src="http://localhost/visualCaptcha/public/audio?r=arr878p5otb" type="audio/ogg">
+<source src="http://localhost/visualCaptcha/public/audio?r=arr878p5otb" type="audio/mpeg"></audio>
+</div>
+<p class="visualCaptcha-explanation">Click or touch the <strong>Man</strong>
+<input class="form-control imageField" name="f65cbfe5b1c28812518b" value="a1583d38e03f44e955bd" readonly="readonly" type="hidden"></p><div class="visualCaptcha-possibilities">
+<div class="img">
+<a href="#"><img src="http://localhost/visualCaptcha/public/image/0?r=arr878p5otb" id="visualCaptcha-img-0" data-index="0" alt="" title=""></a></div><div class="img">
+<a href="#"><img src="http://localhost/visualCaptcha/public/image/1?r=arr878p5otb" id="visualCaptcha-img-1" data-index="1" alt="" title=""></a></div><div class="img"><a href="#"><img src="http://localhost/visualCaptcha/public/image/2?r=arr878p5otb" id="visualCaptcha-img-2" data-index="2" alt="" title=""></a></div><div class="img">
+<a href="#"><img src="http://localhost/visualCaptcha/public/image/3?r=arr878p5otb" id="visualCaptcha-img-3" data-index="3" alt="" title=""></a></div><div class="img visualCaptcha-selected"><a href="#"><img src="http://localhost/visualCaptcha/public/image/4?r=arr878p5otb" id="visualCaptcha-img-4" data-index="4" alt="" title=""></a></div></div>
+<div class="visualCaptcha-button-group"><div class="visualCaptcha-refresh-button">
+<a href="#"><img src="img/refresh.png" title="Refresh/reload: get new images and accessibility option!" alt="Refresh/reload icon"></a></div><div class="visualCaptcha-accessibility-button"><a href="#"><img src="img/accessibility.png" title="Accessibility option: listen to a question and answer it!" alt="Sound icon"></a></div></div></div>
+*/
+
+
+
+
 
 
 require_once(FOOTERF);
