@@ -12,10 +12,11 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 	e107.behaviors.initVisualCaptcha = {
 		attach: function (context, settings)
 		{
-			$(context).find('.e-visual-captcha').once('init-visual-captcha').each(function ()
+			$(context).find('.visual-captcha').once('init-visual-captcha').each(function ()
 			{
 				var $captcha = $(this);
 				var $form = $(this).closest('form');
+				var $label = $form.find('.visual-captcha-label');
 
 				$captcha.visualCaptcha({
 					imgPath: e107.settings.visualcaptcha.imgPath,
@@ -32,6 +33,13 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 								{
 									event.preventDefault();
 								});
+
+								if($label.length > 0)
+								{
+									var $explanation = $captcha.find('.visualCaptcha-explanation');
+									$label.html($explanation.html());
+									$explanation.remove();
+								}
 							}
 						}
 					},

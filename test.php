@@ -12,6 +12,12 @@ if(session_id() == '')
 
 require_once("../../class2.php");
 
+if(!e107::isInstalled('visualcaptcha'))
+{
+	header('Location: ' . e_BASE);
+	exit;
+}
+
 $form = e107::getForm();
 $msg = e107::getMessage();
 

@@ -70,15 +70,15 @@ class visualcaptcha_module
 		e107::css('visualcaptcha', 'css/styles.css');
 		e107::js('visualcaptcha', 'js/visualcaptcha.init.js');
 
-		$element = '<div class="e-visual-captcha"></div>';
+		$element = '<div class="visual-captcha"></div>';
 		$element .= $form->hidden('rand_num', 'x'); // BC compat.
 
 		return $element;
 	}
 
-	static function label() // @todo sandor, is it possible to return eg. "Click or touch the Pencil" from this method?
+	static function label()
 	{
-		return null;
+		return '<span class="visual-captcha-label"></span>';
 	}
 
 	static function verify($code, $other)
