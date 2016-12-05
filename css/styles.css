@@ -1,0 +1,11 @@
+.accessibility-description,
+.visualCaptcha-explanation,
+.status.valid {
+    margin: 0;
+}
+
+@media only screen and (min-width: 750px) {
+    .visualCaptcha-possibilities .img {
+        padding: 9px;
+    }
+}

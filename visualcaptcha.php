@@ -34,10 +34,8 @@ if(!empty($_POST['namespace']))
 	echo $msg->render();
 }
 
-$form_name = 'captcha_test_form';
-
-echo $form->open($form_name, 'POST', e_SELF);
-echo toCaptcha($form_name);
+echo $form->open('captcha_test_form', 'POST', e_SELF);
+echo toCaptcha();
 echo $form->submit('submit', 'Submit');
 echo $form->close();
 
@@ -46,21 +44,28 @@ exit;
 
 
 /**
- * @param $form_name
- * @return
+ * @return string
  */
-function toCaptcha($form_name)
+function toCaptcha()
 {
 	$form = e107::getForm();
+	$tp = e107::getParser();
 
-	$captchaSettings = array();
+	if(e_DEBUG)
+	{
+		e107::library('load', 'visualcaptcha.jquery');
+	}
+	else
+	{
+		e107::library('load', 'visualcaptcha.jquery', 'minified');
+	}
 
-	$captchaSettings[] = array(
-		'namespace' => $form_name,
-		'formID'    => $form->name2id($form_name),
-		'imgPath'   => e_PLUGIN . 'visualcaptcha/img/',
-		'url'       => e_PLUGIN . 'visualcaptcha/app.php',
-		'imgCount'  => 4,
+	$library = e107::library('info', 'visualcaptcha.jquery');
+
+	$captchaSettings = array(
+		'imgPath'   => $tp->replaceConstants($library['library_path']) . 'img/',
+		'url'       => e_PLUGIN_ABS . 'visualcaptcha/app.php',
+		'imgCount'  => 5,
 		'language'  => array(
 			'accessibilityAlt'         => 'Sound icon',
 			'accessibilityTitle'       => 'Accessibility option: listen to a question and answer it!',
@@ -72,20 +77,14 @@ function toCaptcha($form_name)
 	);
 
 	e107::js('settings', array('visualcaptcha' => $captchaSettings));
-	e107::js('visualcaptcha', 'js/visualcaptcha.bootstrap.js');
 
-	if(e_DEBUG)
-	{
-		e107::css('visualcaptcha', 'css/visualcaptcha.src.css');
-		e107::js('visualcaptcha', 'js/visualcaptcha.jquery.src.js');
-	}
-	else
-	{
-		e107::css('visualcaptcha', 'css/visualcaptcha.css');
-		e107::js('visualcaptcha', 'js/visualcaptcha.jquery.js');
-	}
+	e107::css('visualcaptcha', 'css/styles.css');
+	e107::js('visualcaptcha', 'js/visualcaptcha.init.js');
 
-	return '<div class="e-visual-captcha"></div>';
+	$element = '<div class="e-visual-captcha"></div>';
+	$element .= $form->hidden('rand_num', 'x'); // BC compat.
+
+	return $element;
 }
 
 /**

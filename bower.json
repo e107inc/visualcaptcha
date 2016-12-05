@@ -1,0 +1,18 @@
+{
+  "name": "visualcaptcha",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "visualcaptcha.jquery": "0.x"
+  }
+}
