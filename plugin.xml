@@ -8,10 +8,14 @@
 		<word>captcha</word>
 		<word>recaptcha</word>
 	</keywords>
+	<screenshots>
+		<image>screenshot-1.png</image>
+		<image>screenshot-2.png</image>
+		<image>screenshot-3.png</image>
+	</screenshots>
 	<category>misc</category>
 	<copyright></copyright>
 	<adminLinks>
 		<link url="admin_config.php" description="" icon="" iconSmall="" icon128="" primary="true" >LAN_CONFIGURE</link>
 	</adminLinks>
-	
 </e107Plugin>

@@ -76,7 +76,7 @@ class visualcaptcha_module
 		return $element;
 	}
 
-	static function label()
+	static function label() // @todo sandor, is it possible to return eg. "Click or touch the Pencil" from this method?
 	{
 		return null;
 	}
