@@ -78,7 +78,7 @@ class visualcaptcha_module
 
 	static function label()
 	{
-		return "Enable the form";
+		return null;
 	}
 
 	static function verify($code, $other)

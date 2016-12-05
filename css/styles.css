@@ -4,8 +4,17 @@
     margin: 0;
 }
 
+.visualCaptcha { margin-bottom:0}
+.visualCaptcha-explanation { background-color:inherit; color: inherit; font-size:inherit; }
+.visualCaptcha-possibilities .img { border:1px;  }
+.visualCaptcha-possibilities {  border-radius:4px; background:#fff; border:1px solid #ccc; box-shadow: inset 0 1px 1px rgba(0,0,0,.075); }
+.visualCaptcha-refresh-button, .visualCaptcha-accessibility-button { color: #333; background-color: #fff; border-color: #ccc; }
+.visualCaptcha-refresh-button img, .visualCaptcha-accessibility-button img { margin-bottom:3px; }
+.visualCaptcha-possibilities .visualCaptcha-selected { background-color: #f0ad4e; }
+.visualCaptcha-explanation { text-align:inherit }
+
 @media only screen and (min-width: 750px) {
     .visualCaptcha-possibilities .img {
-        padding: 9px;
+        padding: 4px 9px;
     }
 }
