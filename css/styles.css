@@ -11,7 +11,7 @@
 .visualCaptcha-refresh-button, .visualCaptcha-accessibility-button { color: #333; background-color: #fff; border-color: #ccc; }
 .visualCaptcha-refresh-button img, .visualCaptcha-accessibility-button img { margin-bottom:3px; }
 .visualCaptcha-possibilities .visualCaptcha-selected { background-color: #f0ad4e; }
-.visualCaptcha-button-group { vertical-align: top;  } 
+.visualCaptcha-button-group { vertical-align: top; margin-bottom:10px;  }
 
 @media only screen and (min-width: 750px) {
     .visualCaptcha-possibilities .img {
