@@ -45,6 +45,11 @@ echo toCaptcha();
 echo $form->submit('submit', 'Submit');
 echo $form->close();
 
+echo $form->open('captcha_test_form_2', 'POST', e_SELF);
+echo toCaptcha();
+echo $form->submit('submit', 'Submit');
+echo $form->close();
+
 require_once(FOOTERF);
 exit;
 
@@ -87,7 +92,7 @@ function toCaptcha()
 	e107::css('visualcaptcha', 'css/styles.css');
 	e107::js('visualcaptcha', 'js/visualcaptcha.init.js');
 
-	$element = '<div class="e-visual-captcha"></div>';
+	$element = '<div class="visual-captcha"></div>';
 	$element .= $form->hidden('rand_num', 'x'); // BC compat.
 
 	return $element;
