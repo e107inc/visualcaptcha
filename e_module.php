@@ -19,7 +19,7 @@
 
 	@include(__DIR__ . '/vendor/autoload.php');
 
-	e107::getOverride()->replace('secure_image::r_image', 'visualcaptcha_module::blank');
+	e107::getOverride()->replace('secure_image::r_image',   'visualcaptcha_module::blank');
 	e107::getOverride()->replace('secure_image::renderInput', 'visualcaptcha_module::input');
 	e107::getOverride()->replace('secure_image::invalidCode', 'visualcaptcha_module::invalid');
 	e107::getOverride()->replace('secure_image::renderLabel', 'visualcaptcha_module::label');
@@ -30,7 +30,7 @@
 class visualcaptcha_module
 {
 
-	function blank()
+	static function blank()
 	{
 		return;
 	}
@@ -39,7 +39,9 @@ class visualcaptcha_module
 	{
 		$form = e107::getForm();
 		$tp = e107::getParser();
-		
+
+		e107::lan('visualcaptcha', false, true);
+
 		if(e_DEBUG)
 		{
 			e107::library('load', 'visualcaptcha.jquery');
@@ -56,12 +58,12 @@ class visualcaptcha_module
 			'url'       => e_PLUGIN_ABS . 'visualcaptcha/app.php',
 			'imgCount'  => 5,
 			'language'  => array(
-				'accessibilityAlt'         => 'Sound icon',
-				'accessibilityTitle'       => 'Accessibility option: listen to a question and answer it!',
-				'accessibilityDescription' => 'Type below the <strong>answer</strong> to what you hear. Numbers or words:',
-				'explanation'              => 'Click or touch the <strong>ANSWER</strong>',
-				'refreshAlt'               => 'Refresh/reload icon',
-				'refreshTitle'             => 'Refresh/reload: get new images and accessibility option!',
+				'accessibilityAlt'         => LAN_VCAPTCHA_00, // 'Sound icon',
+				'accessibilityTitle'       => LAN_VCAPTCHA_01, // 'Accessibility option: listen to a question and answer it!',
+				'accessibilityDescription' => $tp->lanVars(LAN_VCAPTCHA_02,'<strong>answer</strong>'), // 'Type below the <strong>answer</strong> to what you hear. Numbers or words:',
+				'explanation'              => $tp->lanVars(LAN_VCAPTCHA_03,'<strong>ANSWER</strong>'), // 'Click or touch the <strong>ANSWER</strong>',
+				'refreshAlt'               => LAN_VCAPTCHA_04, // 'Refresh/reload icon',
+				'refreshTitle'             => LAN_VCAPTCHA_05, // 'Refresh/reload: get new images and accessibility option!',
 			)
 		);
 
