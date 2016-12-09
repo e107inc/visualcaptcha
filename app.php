@@ -69,7 +69,7 @@ $app->get('/image/:index', function ($index) use ($app)
 // @param type is optional and defaults to 'mp3', but can also be 'ogg'
 $app->get('/audio(/:type)', function ($type = 'mp3') use ($app)
 {
-	$captcha = new \visualCaptcha\Captcha($app->session, __DIR__.'/languages/English');
+	$captcha = new \visualCaptcha\Captcha($app->session, __DIR__.'/languages/English'); //todo calculate current e107 language.
 
 	if(!$captcha->streamAudio($app->response, $type))
 	{
