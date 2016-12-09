@@ -101,7 +101,10 @@ class visualcaptcha_module
 			$session = new \visualCaptcha\Session();
 		}
 
-		$captcha = new \visualCaptcha\Captcha($session);
+
+		$assetPath = e_PLUGIN."visualcaptcha/languages/".e_LANGUAGE;
+
+		$captcha = new \visualCaptcha\Captcha($session,$assetPath);
 		$frontendData = $captcha->getFrontendData();
 
 		// If captcha is present, try to validate it.

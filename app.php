@@ -1,4 +1,9 @@
 <?php
+
+//require_once("../../e107_config.php");
+// include_once("../../{$HANDLERS_DIRECTORY}core_functions.php");
+//include_once("../../{$HANDLERS_DIRECTORY}e107_class.php");
+
 @include(__DIR__ . '/vendor/autoload.php');
 
 // Initialize Session
@@ -8,6 +13,8 @@ if(session_id() == '')
 {
 	session_start();
 }
+
+
 
 \Slim\Slim::registerAutoloader();
 
@@ -31,7 +38,7 @@ else
 // @param howmany is required, the number of images to generate
 $app->get('/start/:howmany', function ($howMany) use ($app)
 {
-	$captcha = new \visualCaptcha\Captcha($app->session);
+	$captcha = new \visualCaptcha\Captcha($app->session, __DIR__.'/languages/English'); //todo calculate current e107 language.
 	$captcha->generate($howMany);
 
 	$app->response['Content-Type'] = 'application/json';
@@ -44,7 +51,8 @@ $app->get('/start/:howmany', function ($howMany) use ($app)
 // @param index is required, the index of the image you wish to get
 $app->get('/image/:index', function ($index) use ($app)
 {
-	$captcha = new \visualCaptcha\Captcha($app->session);
+
+	$captcha = new \visualCaptcha\Captcha($app->session, __DIR__); // e107_plugins/visualcaptcha/images
 
 	if(!$captcha->streamImage(
 		$app->response,
@@ -61,7 +69,7 @@ $app->get('/image/:index', function ($index) use ($app)
 // @param type is optional and defaults to 'mp3', but can also be 'ogg'
 $app->get('/audio(/:type)', function ($type = 'mp3') use ($app)
 {
-	$captcha = new \visualCaptcha\Captcha($app->session);
+	$captcha = new \visualCaptcha\Captcha($app->session, __DIR__.'/languages/English');
 
 	if(!$captcha->streamAudio($app->response, $type))
 	{
