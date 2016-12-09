@@ -89,9 +89,12 @@ class visualcaptcha_module
 		return (self::invalid()) ? false : true;
 	}
 
+	/**
+	 * @return bool - true if it failed to validate and false if it succeeded.
+	 */
 	static function invalid()
 	{
-		$captchaValid = false;
+		$captchaValid = true;
 
 		if(!empty($_POST['namespace']))
 		{
@@ -103,12 +106,12 @@ class visualcaptcha_module
 		}
 
 
-		$assetPath = __DIR__.'/languages/English';
+		$assetPath = __DIR__.DIRECTORY_SEPARATOR."languages".DIRECTORY_SEPARATOR."English";
 
 		$captcha = new \visualCaptcha\Captcha($session, $assetPath);
 		$frontendData = $captcha->getFrontendData();
 
-		// print_a($frontendData);
+	    e107::getDebug()->log($frontendData);
 
 		// If captcha is present, try to validate it.
 		if($frontendData)
@@ -118,7 +121,7 @@ class visualcaptcha_module
 			{
 				if($captcha->validateImage($imageAnswer))
 				{
-					$captchaValid = true;
+					$captchaValid = false;
 				}
 			}
 			else //todo another instance of captcha with a different asset path?
@@ -127,7 +130,7 @@ class visualcaptcha_module
 				{
 					if($captcha->validateAudio($audioAnswer))
 					{
-						$captchaValid = true;
+						$captchaValid = false;
 					}
 				}
 			}

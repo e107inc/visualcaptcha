@@ -14,7 +14,7 @@ require_once("../../class2.php");
 
 if(!e107::isInstalled('visualcaptcha'))
 {
-	header('Location: ' . e_BASE);
+	e107::redirect();
 	exit;
 }
 
@@ -26,9 +26,9 @@ require_once(HEADERF);
 
 if(!empty($_POST['namespace']))
 {
-	$valid = validateCaptcha();
+	$invalid = e107::getSecureImg()->invalidCode(); // validateCaptcha();
 
-	if(!$valid)
+	if($invalid)
 	{
 		$msg->addError('Validation failed.');
 	}
@@ -40,13 +40,16 @@ if(!empty($_POST['namespace']))
 	echo $msg->render();
 }
 
+
+
+
 echo $form->open('captcha_test_form', 'POST', e_SELF);
-echo toCaptcha();
+echo e107::getSecureImg()->renderInput(); // toCaptcha();
 echo $form->submit('submit', 'Submit');
 echo $form->close();
 
 echo $form->open('captcha_test_form_2', 'POST', e_SELF);
-echo toCaptcha();
+echo e107::getSecureImg()->renderInput(); // toCaptcha();
 echo $form->submit('submit', 'Submit');
 echo $form->close();
 
@@ -57,6 +60,7 @@ exit;
 /**
  * @return string
  */
+ /*
 function toCaptcha()
 {
 	$form = e107::getForm();
@@ -96,11 +100,12 @@ function toCaptcha()
 	$element .= $form->hidden('rand_num', 'x'); // BC compat.
 
 	return $element;
-}
+}*/
 
 /**
  * @return bool
  */
+ /*
 function validateCaptcha()
 {
 	$captchaValid = false;
@@ -144,4 +149,4 @@ function validateCaptcha()
 	}
 
 	return $captchaValid;
-}
+}*/
