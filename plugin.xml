@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e107Plugin name="Visual Captcha" lan="" version="1.0" date="2016-12-06" compatibility="2.0" installRequired="true" >
-	<author name="CaMer0n" url="http://e107.org" />
+	<author name="CaMer0n &amp; Lona Lore" url="http://e107.org" />
 	<summary lan="">Visual Captcha for e107. </summary>
 	<description lan="">A drop-in replacement for the e107 captcha, making your site more use-friendly and secure.</description>
 	<keywords>
@@ -14,6 +14,6 @@
 		<link url="admin_config.php" description="" icon="" iconSmall="" icon128="" primary="true" >LAN_CONFIGURE</link>
 	</adminLinks>
 	<pluginPrefs>
-		<pref name='Icon'></pref>
+		<pref name='imgCount'>5</pref>
 	</pluginPrefs>
 </e107Plugin>

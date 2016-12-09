@@ -39,6 +39,7 @@ class visualcaptcha_module
 	{
 		$form = e107::getForm();
 		$tp = e107::getParser();
+		$pref = e107::pref('visualcaptcha');
 
 		e107::lan('visualcaptcha', false, true);
 
@@ -56,7 +57,7 @@ class visualcaptcha_module
 		$captchaSettings = array(
 			'imgPath'   => $tp->replaceConstants($library['library_path']) . 'img/',
 			'url'       => e_PLUGIN_ABS . 'visualcaptcha/app.php',
-			'imgCount'  => 5,
+			'imgCount'  => vartrue($pref['imgCount'],5),
 			'language'  => array(
 				'accessibilityAlt'         => LAN_VCAPTCHA_00, // 'Sound icon',
 				'accessibilityTitle'       => LAN_VCAPTCHA_01, // 'Accessibility option: listen to a question and answer it!',
@@ -102,10 +103,12 @@ class visualcaptcha_module
 		}
 
 
-		$assetPath = e_PLUGIN."visualcaptcha/languages/".e_LANGUAGE;
+		$assetPath = __DIR__.'/languages/English';
 
-		$captcha = new \visualCaptcha\Captcha($session,$assetPath);
+		$captcha = new \visualCaptcha\Captcha($session, $assetPath);
 		$frontendData = $captcha->getFrontendData();
+
+		// print_a($frontendData);
 
 		// If captcha is present, try to validate it.
 		if($frontendData)
@@ -118,7 +121,7 @@ class visualcaptcha_module
 					$captchaValid = true;
 				}
 			}
-			else
+			else //todo another instance of captcha with a different asset path?
 			{
 				if(($audioAnswer = $_POST[$frontendData['audioFieldName']]) && !empty($audioAnswer))
 				{
