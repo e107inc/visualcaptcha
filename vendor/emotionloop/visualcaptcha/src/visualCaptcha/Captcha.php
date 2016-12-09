@@ -153,6 +153,14 @@ class Captcha {
             $imageFileName = preg_replace( '/\.png/i', '@2x.png', $imageFileName );
             $imageFilePath = preg_replace( '/\.png/i', '@2x.png', $imageFilePath );
         }
+/*
+        var_dump($headers);
+var_dump($imageOption);
+var_dump($index);
+var_dump($_GET);
+
+exit;*/
+
 
         // If the index is non-existent, the file name will be empty, same as if the options weren't generated
         if ( !empty( $imageFileName ) ) {
@@ -256,6 +264,7 @@ class Captcha {
     // Stream file from path
     private function utilStreamFile( $headers, $filePath ) {
         if ( !file_exists( $filePath ) ) {
+            echo "FilePath Not Found: ".$filePath;
             return false;
         }
 

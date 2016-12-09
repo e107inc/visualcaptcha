@@ -1,27 +1,31 @@
 <?php
 
-//require_once("../../e107_config.php");
-// include_once("../../{$HANDLERS_DIRECTORY}core_functions.php");
-//include_once("../../{$HANDLERS_DIRECTORY}e107_class.php");
+// Initialize Session
 
+
+
+$_E107['no_buffer'] = true;
 $_E107['no_online'] = true;
 $_E107['no_forceuserupdate'] = true;
 $_E107['no_menus'] = true;
 $_E107['no_maintenance'] = true;
-//$_E107['no_theme'] = true;
+define('e_DEBUG', true);
+// error_reporting(E_ALL);
+// require_once("../../class2.php");
 
-require_once("../../class2.php");
-
-@include(__DIR__ . '/vendor/autoload.php');
-
-// Initialize Session
-/*
 session_cache_limiter(false);
 
 if(session_id() == '')
 {
 	session_start();
-}*/
+}
+
+
+//$_E107['no_theme'] = true;
+
+
+
+@include(__DIR__ . '/vendor/autoload.php');
 
 
 \Slim\Slim::registerAutoloader();
@@ -62,6 +66,14 @@ $app->get('/image/:index', function ($index) use ($app)
 {
 
 	$captcha = new \visualCaptcha\Captcha($app->session, __DIR__); // e107_plugins/visualcaptcha/images
+
+
+	if(defined("e107_INIT"))
+	{
+		list($index,$tmp) = explode("?", $index); // Fix for class2.php inclusion
+	}
+
+	$index = intval($index);
 
 	if(!$captcha->streamImage(
 		$app->response,
