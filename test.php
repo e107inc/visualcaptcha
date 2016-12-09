@@ -1,17 +1,10 @@
 <?php
 
-@include(__DIR__ . '/vendor/autoload.php');
+
 
 // Initialize Session.
 
-session_cache_limiter(false);
-
-if(session_id() == '')
-{
-	session_start();
-}
-
-
+session_destroy();
 require_once("../../class2.php");
 
 if(!e107::isInstalled('visualcaptcha'))
@@ -19,7 +12,7 @@ if(!e107::isInstalled('visualcaptcha'))
 	e107::redirect();
 	exit;
 }
-
+@include(__DIR__ . '/vendor/autoload.php');
 
 
 

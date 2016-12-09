@@ -4,25 +4,25 @@
 
 
 
-$_E107['no_buffer'] = true;
+//$_E107['no_buffer'] = true;
 $_E107['no_online'] = true;
 $_E107['no_forceuserupdate'] = true;
 $_E107['no_menus'] = true;
 $_E107['no_maintenance'] = true;
-define('e_DEBUG', true);
+
 // error_reporting(E_ALL);
+
+session_cache_limiter(false);
+
 // require_once("../../class2.php");
 
 session_cache_limiter(false);
+header('Content-Encoding: none');
 
 if(session_id() == '')
 {
 	session_start();
 }
-
-
-//$_E107['no_theme'] = true;
-
 
 
 @include(__DIR__ . '/vendor/autoload.php');
@@ -38,14 +38,23 @@ $app = new \Slim\Slim();
 // Inject Session object into app
 if($namespace = $app->request->params('namespace'))
 {
-	$app->session = new \visualCaptcha\Session('visualcaptcha_' . $namespace);
+	$app->session = defined("e107_INIT") ? e107::getSession('visualcaptcha_' . $namespace) :  new \visualCaptcha\Session('visualcaptcha_' . $namespace);
+//	$app->session = e107::getSession('visualcaptcha_' . $namespace); //
 }
 else
 {
-	$app->session = new \visualCaptcha\Session();
+	$app->session = defined("e107_INIT") ? e107::getSession('visualcaptcha') : new \visualCaptcha\Session();
+//	$app->session = e107::getSession('visualcaptcha'); //;
 }
 
 
+
+
+/*print_a($session);
+print_a($_SERVER['QUERY_STRING']);
+print_a($_GET);
+print_a(e_QUERY);
+exit;*/
 // Populates captcha data into session object
 // -----------------------------------------------------------------------------
 // @param howmany is required, the number of images to generate
@@ -74,7 +83,7 @@ $app->get('/image/:index', function ($index) use ($app)
 	}
 
 	$index = intval($index);
-
+	
 	if(!$captcha->streamImage(
 		$app->response,
 		$index,

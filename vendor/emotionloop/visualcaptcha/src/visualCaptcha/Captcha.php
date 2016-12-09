@@ -154,9 +154,15 @@ class Captcha {
             $imageFilePath = preg_replace( '/\.png/i', '@2x.png', $imageFilePath );
         }
 /*
+        echo "<h4>Image Options</h4>";
+        var_dump($this->getImageOptions());
+          echo "<h4>Headers</h4>";
         var_dump($headers);
+        echo "<h4>Image Option</h4>";
 var_dump($imageOption);
+ echo "<h4>Index</h4>";
 var_dump($index);
+ echo "<h4>_GET</h4>";
 var_dump($_GET);
 
 exit;*/
@@ -277,7 +283,7 @@ exit;*/
         $headers[ 'Cache-Control' ] = 'no-cache, no-store, must-revalidate';
         $headers[ 'Pragma' ] = 'no-cache';
         $headers[ 'Expires' ] = 0;
-
+//echo "file:".$filePath;
         readfile( $filePath );
 
         // Add some noise randomly, so images can't be saved and matched easily by filesize or checksum
