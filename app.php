@@ -4,16 +4,24 @@
 // include_once("../../{$HANDLERS_DIRECTORY}core_functions.php");
 //include_once("../../{$HANDLERS_DIRECTORY}e107_class.php");
 
+$_E107['no_online'] = true;
+$_E107['no_forceuserupdate'] = true;
+$_E107['no_menus'] = true;
+$_E107['no_maintenance'] = true;
+//$_E107['no_theme'] = true;
+
+require_once("../../class2.php");
+
 @include(__DIR__ . '/vendor/autoload.php');
 
 // Initialize Session
+/*
 session_cache_limiter(false);
 
 if(session_id() == '')
 {
 	session_start();
-}
-
+}*/
 
 
 \Slim\Slim::registerAutoloader();
@@ -21,7 +29,7 @@ if(session_id() == '')
 $app = new \Slim\Slim();
 
 // Setup CORS
-$app->response['Access-Control-Allow-Origin'] = '*';
+ $app->response['Access-Control-Allow-Origin'] = '*';
 
 // Inject Session object into app
 if($namespace = $app->request->params('namespace'))
@@ -32,6 +40,7 @@ else
 {
 	$app->session = new \visualCaptcha\Session();
 }
+
 
 // Populates captcha data into session object
 // -----------------------------------------------------------------------------
