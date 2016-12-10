@@ -11,18 +11,21 @@ $_E107['no_menus'] = true;
 $_E107['no_maintenance'] = true;
 
 // error_reporting(E_ALL);
+define('e_MINIMAL', true);
+require_once("../../class2.php");
+//session_cache_limiter(false);
 
+
+/*
 session_cache_limiter(false);
-
-// require_once("../../class2.php");
-
-session_cache_limiter(false);
-header('Content-Encoding: none');
+//header('Content-Encoding: none');
 
 if(session_id() == '')
 {
 	session_start();
 }
+*/
+
 
 
 @include(__DIR__ . '/vendor/autoload.php');
@@ -48,13 +51,6 @@ else
 }
 
 
-
-
-/*print_a($session);
-print_a($_SERVER['QUERY_STRING']);
-print_a($_GET);
-print_a(e_QUERY);
-exit;*/
 // Populates captcha data into session object
 // -----------------------------------------------------------------------------
 // @param howmany is required, the number of images to generate
@@ -106,5 +102,8 @@ $app->get('/audio(/:type)', function ($type = 'mp3') use ($app)
 		$app->pass();
 	}
 });
+
+
+while (@ob_end_clean());
 
 $app->run();
