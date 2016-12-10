@@ -70,7 +70,7 @@ class visualcaptcha_module
 
 		e107::js('settings', array('visualcaptcha' => $captchaSettings));
 
-		e107::css('visualcaptcha', 'css/styles.css');
+		e107::css('visualcaptcha', 'css/visualcaptcha.css');
 		e107::js('visualcaptcha', 'js/visualcaptcha.init.js');
 
 		$element = '<div class="visual-captcha"></div>';
