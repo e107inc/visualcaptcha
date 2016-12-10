@@ -671,6 +671,7 @@ define( 'visualcaptcha/xhr-request',[],function() {
 
     return function( url, callback ) {
         var ajaxRequest = new XMLHttpRequest();
+console.log(url);
 
         ajaxRequest.open( 'GET', url, true );
         ajaxRequest.onreadystatechange = function() {
@@ -679,7 +680,7 @@ define( 'visualcaptcha/xhr-request',[],function() {
             if ( ajaxRequest.readyState !== 4 || ajaxRequest.status !== 200 ) {
                 return;
             }
-
+console.log(ajaxRequest.responseText);
             response = JSON.parse( ajaxRequest.responseText );
             callback( response );
         };

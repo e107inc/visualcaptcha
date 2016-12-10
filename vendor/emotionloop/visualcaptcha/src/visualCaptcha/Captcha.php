@@ -156,17 +156,20 @@ class Captcha {
 /*
         echo "<h4>Image Options</h4>";
         var_dump($this->getImageOptions());
-          echo "<h4>Headers</h4>";
+          echo "<h4>Session</h4>";
+        var_dump($this->session);
+        echo "<h4>\$imageOption</h4>";
+        var_dump($imageOption);
+         echo "<h4>\$imageFileName</h4>";
+        var_dump($imageFileName);
+         echo "<h4> \$imageFilePath</h4>";
+        var_dump( $imageFilePath);
+         echo "<h4>Index</h4>";
+        var_dump($index);
+         echo "<h4>Headers</h4>";
         var_dump($headers);
-        echo "<h4>Image Option</h4>";
-var_dump($imageOption);
- echo "<h4>Index</h4>";
-var_dump($index);
- echo "<h4>_GET</h4>";
-var_dump($_GET);
-
-exit;*/
-
+exit;
+*/
 
         // If the index is non-existent, the file name will be empty, same as if the options weren't generated
         if ( !empty( $imageFileName ) ) {
@@ -273,7 +276,8 @@ exit;*/
             echo "FilePath Not Found: ".$filePath;
             return false;
         }
-
+//var_dump($this->session);
+//exit;
         $mimeType = $this->getMimeType( $filePath );
 
         // Set the appropriate mime type

@@ -4,7 +4,7 @@
 
 // Initialize Session.
 
-session_destroy();
+
 require_once("../../class2.php");
 
 if(!e107::isInstalled('visualcaptcha'))
@@ -18,7 +18,7 @@ if(!e107::isInstalled('visualcaptcha'))
 
 $form = e107::getForm();
 $msg = e107::getMessage();
-
+define('e_IFRAME', true);
 
 require_once(HEADERF);
 

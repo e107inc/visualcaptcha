@@ -98,12 +98,16 @@ class visualcaptcha_module
 
 		if(!empty($_POST['namespace']))
 		{
-			$session = new \visualCaptcha\Session('visualcaptcha_' . $_POST['namespace']);
+			$session = e107::getSession('visualcaptcha_' . $_POST['namespace']) ;
 		}
 		else
 		{
-			$session = new \visualCaptcha\Session();
+
+			$session = e107::getSession('visualcaptcha');
 		}
+
+
+		// e107::getDebug()->log($session);
 
 
 		$assetPath = __DIR__.DIRECTORY_SEPARATOR."languages".DIRECTORY_SEPARATOR."English";
@@ -111,7 +115,7 @@ class visualcaptcha_module
 		$captcha = new \visualCaptcha\Captcha($session, $assetPath);
 		$frontendData = $captcha->getFrontendData();
 
-	    e107::getDebug()->log($frontendData);
+	 //   e107::getDebug()->log($frontendData);
 
 		// If captcha is present, try to validate it.
 		if($frontendData)
