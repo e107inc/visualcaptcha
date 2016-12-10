@@ -18,3 +18,5 @@
         padding: 4px 6px;
     }
 }
+
+form#login-page .visualCaptcha-possibilities { width:100%; padding:3px }
