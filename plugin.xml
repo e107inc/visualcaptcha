@@ -14,6 +14,7 @@
 		<link url="admin_config.php" description="" icon="" iconSmall="" icon128="" primary="true" >LAN_CONFIGURE</link>
 	</adminLinks>
 	<pluginPrefs>
+		<pref name='active'>1</pref>
 		<pref name='imgCount'>5</pref>
 	</pluginPrefs>
 </e107Plugin>

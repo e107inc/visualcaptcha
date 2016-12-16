@@ -15,4 +15,4 @@ define("LAN_VCAPTCHA_02", "Type below the [x] to what you hear. Numbers or words
 define("LAN_VCAPTCHA_03", "Click or touch the [x]");
 define("LAN_VCAPTCHA_04", "Refresh/reload icon");
 define("LAN_VCAPTCHA_05", "Refresh/reload: get new images and accessibility option!");
-define("LAN_VCAPTCHA_06", "");
+define("LAN_VCAPTCHA_06", "Incorrect image selected");

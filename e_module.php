@@ -13,10 +13,10 @@
  * 
  */
 
-// if(e_PAGE == 'login.php' || e_PAGE == 'admin.php')
+$vcaptchaActive = e107::pref('visualcaptcha', 'active');
+
+ if($vcaptchaActive)
 {
-
-
 	@include(__DIR__ . '/vendor/autoload.php');
 
 	e107::getOverride()->replace('secure_image::r_image',   'visualcaptcha_module::blank');
@@ -29,6 +29,11 @@
 
 class visualcaptcha_module
 {
+	function __construct()
+	{
+		e107::lan('visualcaptcha', false, true);
+	}
+
 
 	static function blank()
 	{
@@ -41,7 +46,7 @@ class visualcaptcha_module
 		$tp = e107::getParser();
 		$pref = e107::pref('visualcaptcha');
 
-		e107::lan('visualcaptcha', false, true);
+
 
 		if(e_DEBUG)
 		{
@@ -90,11 +95,11 @@ class visualcaptcha_module
 	}
 
 	/**
-	 * @return bool - true if it failed to validate and false if it succeeded.
+	 * @return bool - error message if it failed to validate and false if it succeeded.
 	 */
 	static function invalid()
 	{
-		$captchaValid = true;
+		$captchaValid = LAN_VCAPTCHA_06; // Incorrect Image selected.
 
 		if(!empty($_POST['namespace']))
 		{

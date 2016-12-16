@@ -72,17 +72,16 @@ class visualcaptcha_ui extends e_admin_ui
 
 	//	protected $preftabs        = array('General', 'Other' );
 		protected $prefs = array(
-			'imgCount'		=> array('title'=> 'Number of Images', 'tab'=>0, 'type'=>'number', 'data' => 'int', 'help'=>'', 'writeParms'=>'path=plugin'),
+			'active'		=> array('title'=> 'Active', 'tab'=>0, 'type'=>'bool', 'data' => 'int', 'help'=>''),
+			'imgCount'		=> array('title'=> 'Number of Images', 'tab'=>0, 'type'=>'number', 'data' => 'int', 'help'=>''),
 		); 
 
-	
 		public function init()
 		{
 			// Set drop-down values (if any). 
 	
 		}
 
-		
 		// ------- Customize Create --------
 		
 		public function beforeCreate($new_data,$old_data)
