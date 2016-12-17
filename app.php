@@ -231,7 +231,7 @@ new visualcaptch_front();
 
 
 
-
+/*
 
 if(!defined('e107_INIT'))
 {
@@ -273,11 +273,7 @@ else
 }
 
 
-/*print_a($session);
-print_a($_SERVER['QUERY_STRING']);
-print_a($_GET);
-print_a(e_QUERY);
-exit;*/
+
 // Populates captcha data into session object
 // -----------------------------------------------------------------------------
 // @param howmany is required, the number of images to generate
@@ -334,3 +330,4 @@ $app->get('/audio(/:type)', function ($type = 'mp3') use ($app) //todo this is f
 
 
 $app->run();
+*/
