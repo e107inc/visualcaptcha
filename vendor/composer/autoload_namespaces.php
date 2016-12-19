@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'visualCaptcha' => array($vendorDir . '/emotionloop/visualcaptcha/src'),
-    'Slim' => array($vendorDir . '/slim/slim'),
 );
