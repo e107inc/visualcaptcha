@@ -24,4 +24,7 @@
 		<pref name='active'>1</pref>
 		<pref name='imgCount'>5</pref>
 	</pluginPrefs>
+	<dependencies>
+		<extension name='openssl'/>
+	</dependencies>
 </e107Plugin>
