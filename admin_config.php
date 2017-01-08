@@ -78,6 +78,12 @@ class visualcaptcha_ui extends e_admin_ui
 
 		public function init()
 		{
+
+			if(!function_exists('openssl_random_pseudo_bytes'))
+			{
+				e107::getMessage()->addWarning("The openssl module is not present in PHP.");
+			}
+
 			// Set drop-down values (if any). 
 	
 		}

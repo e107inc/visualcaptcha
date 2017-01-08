@@ -37,7 +37,7 @@ class visualcaptcha_module
 
 	static function blank()
 	{
-		return;
+		return self::input();
 	}
 
 	static function input()
