@@ -73,7 +73,7 @@ class visualcaptcha_ui extends e_admin_ui
 	//	protected $preftabs        = array('General', 'Other' );
 		protected $prefs = array(
 			'active'		=> array('title'=> 'Active', 'tab'=>0, 'type'=>'bool', 'data' => 'int', 'help'=>''),
-			'imgCount'		=> array('title'=> 'Number of Images', 'tab'=>0, 'type'=>'number', 'data' => 'int', 'help'=>''),
+			'imgCount'		=> array('title'=> 'Number of Images', 'tab'=>0, 'type'=>'number', 'data' => 'int', 'writeParms'=>array('min'=>4, 'max'=>9, 'pattern'=>'[4-9]', 'required'=>1), 'help'=>'Minimum is 4.'),
 		); 
 
 		public function init()
