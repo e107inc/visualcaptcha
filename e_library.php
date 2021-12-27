@@ -56,6 +56,9 @@ class visualcaptcha_library
 					),
 				),
 			),
+			'dependencies' => array(
+				'jquery.once',
+			),
 		);
 
 		return $libraries;
