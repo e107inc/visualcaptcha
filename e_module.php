@@ -153,4 +153,3 @@ class visualcaptcha_module
 }
 
 
-?>
